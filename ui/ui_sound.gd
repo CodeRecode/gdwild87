@@ -50,4 +50,3 @@ func connect_to_button(button: Button) -> void:
 func connect_to_slider(slider: Slider) -> void:
 	slider.focus_exited.connect(_on_mouse_entered)
 	slider.value_changed.connect(func(_val: float) -> void: slider_move_sounds.pick_random().play())
-	print("slider moved")
