@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-@export var Speed = 20.0
+@export var Speed = 10.0
 @export var JumpVelocity = 4.5
 
 
