@@ -1,7 +1,144 @@
-[gd_resource type="Theme" format=3 uid="uid://dxj1nu0srofui"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://dxj1nu0srofui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qaqce"]
+bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2wmt"]
+bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.627451, 0.5058824, 0.14117648, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyvsd"]
+bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.6271199, 0.5060845, 0.14268437, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q64gk"]
+bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjyjs"]
+bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
+
+[sub_resource type="Gradient" id="Gradient_qaqce"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.09835159, 0.3925773, 0.09548522, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q2wmt"]
+gradient = SubResource("Gradient_qaqce")
+
+[sub_resource type="QuadMesh" id="QuadMesh_eyvsd"]
+size = Vector2(12, 12)
+center_offset = Vector3(0, 7, 0)
+
+[sub_resource type="MeshTexture" id="MeshTexture_q64gk"]
+mesh = SubResource("QuadMesh_eyvsd")
+base_texture = SubResource("GradientTexture2D_q2wmt")
+image_size = Vector2(15, 15)
+
+[sub_resource type="Gradient" id="Gradient_q2wmt"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.16830039, 0.63348764, 0.1655842, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eyvsd"]
+gradient = SubResource("Gradient_q2wmt")
+
+[sub_resource type="QuadMesh" id="QuadMesh_q64gk"]
+size = Vector2(15, 15)
+center_offset = Vector3(0, 7, 0)
+
+[sub_resource type="MeshTexture" id="MeshTexture_vjyjs"]
+mesh = SubResource("QuadMesh_q64gk")
+base_texture = SubResource("GradientTexture2D_eyvsd")
+image_size = Vector2(15, 15)
+
+[sub_resource type="Gradient" id="Gradient_0xm1a"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.18510228, 0.7098132, 0.18323657, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_co3lq"]
+gradient = SubResource("Gradient_0xm1a")
+
+[sub_resource type="QuadMesh" id="QuadMesh_alk7s"]
+size = Vector2(15, 15)
+center_offset = Vector3(0, 7, 0)
+
+[sub_resource type="MeshTexture" id="MeshTexture_5ke63"]
+mesh = SubResource("QuadMesh_alk7s")
+base_texture = SubResource("GradientTexture2D_co3lq")
+image_size = Vector2(15, 15)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_co3lq"]
+bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alk7s"]
+bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ke63"]
+bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm1a"]
+bg_color = Color(0.1921432, 0.18153548, 0.17370838, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
 
 [resource]
+Button/colors/font_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
+Button/colors/font_focus_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
+Button/colors/font_hover_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
+Button/colors/font_hover_pressed_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
+Button/colors/font_pressed_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_qaqce")
+Button/styles/focus = SubResource("StyleBoxFlat_q2wmt")
+Button/styles/hover = SubResource("StyleBoxFlat_eyvsd")
+Button/styles/normal = SubResource("StyleBoxFlat_q64gk")
+Button/styles/pressed = SubResource("StyleBoxFlat_vjyjs")
+HSlider/icons/grabber = SubResource("MeshTexture_q64gk")
+HSlider/icons/grabber_disabled = SubResource("MeshTexture_vjyjs")
+HSlider/icons/grabber_highlight = SubResource("MeshTexture_5ke63")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_co3lq")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_alk7s")
+HSlider/styles/slider = SubResource("StyleBoxFlat_5ke63")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_0xm1a")

@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
+[autoload]
+
+UISound="*res://ui/ui_sound.tscn"
+MusicManager="*res://audio/music/music_manager.tscn"
+
 [display]
 
 window/size/viewport_width=1280

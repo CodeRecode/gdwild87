@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://b56aineoyl3q"]
+
+[ext_resource type="Script" uid="uid://nfxcac6bj6f5" path="res://ui/ui_sound.gd" id="1_r6e2n"]
+[ext_resource type="AudioStream" uid="uid://bsx163uffmfyt" path="res://audio/sfx/metal_button_1.wav" id="2_fcix7"]
+[ext_resource type="AudioStream" uid="uid://brknorj52q8ju" path="res://audio/sfx/chunky_1.wav" id="2_q4jok"]
+[ext_resource type="AudioStream" uid="uid://cey06j6x5gvyt" path="res://audio/sfx/metal_button_2.wav" id="3_uk2ve"]
+[ext_resource type="AudioStream" uid="uid://7vpb0o6drifk" path="res://audio/sfx/chunky_2.wav" id="3_y7ueg"]
+[ext_resource type="AudioStream" uid="uid://cavhhgng3pmeq" path="res://audio/sfx/chunky_3.wav" id="4_13eex"]
+[ext_resource type="AudioStream" uid="uid://cs5j08tf7jay7" path="res://audio/sfx/metal_button_3.wav" id="4_ip8kh"]
+[ext_resource type="AudioStream" uid="uid://b1x7aruco7ljo" path="res://audio/sfx/slider_1.wav" id="8_y48pp"]
+[ext_resource type="AudioStream" uid="uid://dhqaml882j7ed" path="res://audio/sfx/slider_2.wav" id="9_v4cgj"]
+[ext_resource type="AudioStream" uid="uid://lt6uvxsswdnj" path="res://audio/sfx/slider_3.wav" id="10_pmp05"]
+
+[node name="UISound" type="Node"]
+script = ExtResource("1_r6e2n")
+
+[node name="ButtonPressSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q4jok")
+volume_db = -6.0
+bus = &"SoundEffects"
+
+[node name="ButtonPressSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_y7ueg")
+volume_db = -6.0
+bus = &"SoundEffects"
+
+[node name="ButtonPressSound3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_13eex")
+volume_db = -6.0
+bus = &"SoundEffects"
+
+[node name="ButtonHoverSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fcix7")
+bus = &"SoundEffects"
+
+[node name="ButtonHoverSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uk2ve")
+bus = &"SoundEffects"
+
+[node name="ButtonHoverSound3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ip8kh")
+bus = &"SoundEffects"
+
+[node name="SliderSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_y48pp")
+volume_db = -14.0
+pitch_scale = 0.7
+bus = &"SoundEffects"
+
+[node name="SliderSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_v4cgj")
+volume_db = -14.0
+pitch_scale = 0.7
+bus = &"SoundEffects"
+
+[node name="SliderSound3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_pmp05")
+volume_db = -14.0
+pitch_scale = 0.7
+bus = &"SoundEffects"
