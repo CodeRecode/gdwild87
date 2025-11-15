@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctcpv6ss23cjf"]
+
+[ext_resource type="Script" uid="uid://vaeqqbc2cejp" path="res://audio/music/music_mannager.gd" id="1_u6y7i"]
+[ext_resource type="AudioStream" uid="uid://dh15senwd8s51" path="res://audio/music/dfs_ashes.mp3" id="2_a1uwq"]
+
+[node name="MusicMannager" type="Node"]
+script = ExtResource("1_u6y7i")
+
+[node name="AshesMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_a1uwq")
+volume_db = -18.417
+bus = &"Music"
