@@ -35,6 +35,7 @@ func _face_player() -> void:
 	if not target:
 		return
 	var look_to = target.global_position
+	look_to.y = 0
 	look_at(look_to)
 
 func _try_attack() -> void:

@@ -1,8 +1,10 @@
 extends Enemy
 
+@export var Projectile: PackedScene
 @export var Speed = 5.0
 @export var Health = 10.0
-@export var AttackDamage = 2.0
+@export var AttackCooldown = 1.0
+var current_cooldown = -1.0
 
 var target: Player
 var can_attack: bool = false
@@ -11,23 +13,31 @@ func _ready() -> void:
 	set_health(Health)
 
 func _physics_process(delta: float) -> void:
-	var delta_speed = Speed * delta * Engine.physics_ticks_per_second
-	if target:
-		var direction = (target.global_position - global_position).normalized()
-		velocity.x = direction.x * delta_speed
-		velocity.z = direction.z * delta_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, delta_speed)
-		velocity.z = move_toward(velocity.z, 0, delta_speed)
-	move_and_slide()
+	_face_player()
+	_try_attack(delta)
 	
-	_try_attack()
-	
-	
-func _try_attack() -> void:
-	if not can_attack:
+func _face_player() -> void:
+	if not target:
 		return
-	target.apply_damage(AttackDamage)
+	var look_to = target.global_position
+	look_to.y = 0
+	look_at(look_to)
+	
+func _try_attack(delta: float) -> void:
+	if current_cooldown > 0.0:
+		current_cooldown -= delta
+		return
+	
+	if not target:
+		return
+	var forward = -global_basis.z
+	var orb = Projectile.instantiate()
+	orb.set_direction(forward)
+	owner.add_child(orb)
+	orb.global_position = global_position + Vector3.UP + forward * .5
+	
+	current_cooldown = AttackCooldown
+	
 
 func _on_vision_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -36,13 +46,3 @@ func _on_vision_body_entered(body: Node3D) -> void:
 func _on_vision_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		target = null
-
-
-func _on_attack_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		can_attack = true
-
-
-func _on_attack_area_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		can_attack = false

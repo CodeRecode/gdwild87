@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://t0mwxd3juhuq"]
+[gd_scene load_steps=11 format=3 uid="uid://t0mwxd3juhuq"]
 
 [ext_resource type="PackedScene" uid="uid://vii2jisn0a4g" path="res://char/player.tscn" id="1_46lwt"]
+[ext_resource type="PackedScene" uid="uid://dxu5sn7xh1gkk" path="res://char/wizard.tscn" id="2_w7r7j"]
 [ext_resource type="PackedScene" uid="uid://b44yecwsemryk" path="res://char/slime.tscn" id="2_x25rp"]
 [ext_resource type="PackedScene" uid="uid://666nns6li08s" path="res://char/brute.tscn" id="3_gmgay"]
 
@@ -45,6 +46,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_46lwt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("ConvexPolygonShape3D_46lwt")
+
+[node name="Wizard" parent="Floor" instance=ExtResource("2_w7r7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.059162, 0, 1.666666)
+
+[node name="Wizard2" parent="Floor" instance=ExtResource("2_w7r7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.002102, 0, 6.150395)
 
 [node name="Slimes" type="Node" parent="."]
 

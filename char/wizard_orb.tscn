@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3xvjao22qcv5"]
+
+[ext_resource type="Script" uid="uid://qhbtpsa7uxvm" path="res://char/wizard_orb.gd" id="1_1fxfp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_2ngd5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1fxfp"]
+radius = 0.25
+
+[node name="WizardOrb" type="Area3D"]
+script = ExtResource("1_1fxfp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_2ngd5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_1fxfp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
