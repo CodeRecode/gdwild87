@@ -9,7 +9,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_f1ur6"]
 radius = 10.0
 
-[node name="Slime" type="CharacterBody3D"]
+[node name="Slime" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_f1ur6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -21,10 +21,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("SphereMesh_pq3se")
 skeleton = NodePath("../CollisionShape3D")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Vision" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vision"]
 shape = SubResource("SphereShape3D_f1ur6")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Vision" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_area_3d_body_exited"]

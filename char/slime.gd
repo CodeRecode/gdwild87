@@ -1,5 +1,4 @@
-extends CharacterBody3D
-
+extends Enemy
 
 @export var Speed = 5.0
 
