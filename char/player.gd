@@ -8,8 +8,10 @@ class_name Player
 @export var InitAttackRadius = 2.0
 @export var InitAttackCooldown = 0.5
 @export var AttackAngle = 70.0
-
 var attack_cooldown = -100.0
+
+@export var InitMaxHealth = 10.
+var health = InitMaxHealth
 
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var body_mesh: MeshInstance3D = $Body
@@ -80,3 +82,8 @@ func _face_mouse() -> void:
 	var point = Plane.PLANE_XZ.intersects_ray(origin, normal)
 	if point:
 		body_mesh.look_at(point + Vector3.UP)
+
+func apply_damage(damage: float) -> void:
+	health -= damage
+	if health <= 0:
+		print("die")
