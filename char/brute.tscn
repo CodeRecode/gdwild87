@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://666nns6li08s"]
+
+[ext_resource type="Script" uid="uid://c3q6p7pf858r1" path="res://char/brute.gd" id="1_7sjr5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7sjr5"]
+radius = 0.75
+height = 3.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7sjr5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7sjr5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f1ur6"]
+radius = 10.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vsyml"]
+radius = 2.0
+
+[node name="Brute" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_7sjr5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CapsuleShape3D_7sjr5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.5, 0)
+mesh = SubResource("CapsuleMesh_7sjr5")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.89634025, 0, 0, 0, 0.26007593, 0, 0, 0, 0.2627811, 0, 0.455, -0.477)
+mesh = SubResource("BoxMesh_7sjr5")
+
+[node name="Vision" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vision"]
+shape = SubResource("SphereShape3D_f1ur6")
+
+[node name="AttackArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.8)
+shape = SubResource("SphereShape3D_vsyml")
+
+[connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]

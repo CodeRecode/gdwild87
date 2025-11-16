@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://t0mwxd3juhuq"]
+[gd_scene load_steps=10 format=3 uid="uid://t0mwxd3juhuq"]
 
 [ext_resource type="PackedScene" uid="uid://vii2jisn0a4g" path="res://char/player.tscn" id="1_46lwt"]
 [ext_resource type="PackedScene" uid="uid://b44yecwsemryk" path="res://char/slime.tscn" id="2_x25rp"]
+[ext_resource type="PackedScene" uid="uid://666nns6li08s" path="res://char/brute.tscn" id="3_gmgay"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_46lwt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -45,5 +46,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_46lwt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("ConvexPolygonShape3D_46lwt")
 
-[node name="Slime" parent="." instance=ExtResource("2_x25rp")]
+[node name="Slimes" type="Node" parent="."]
+
+[node name="Slime" parent="Slimes" instance=ExtResource("2_x25rp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6568775, 0, -6.4374185)
+
+[node name="Slime2" parent="Slimes" instance=ExtResource("2_x25rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.056276, 0, -7.561157)
+
+[node name="Slime3" parent="Slimes" instance=ExtResource("2_x25rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.82435, 0, -8.175369)
+
+[node name="Slime4" parent="Slimes" instance=ExtResource("2_x25rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6568775, 0, -8.615801)
+
+[node name="Brute" parent="." instance=ExtResource("3_gmgay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.051046, 0, -9.465352)

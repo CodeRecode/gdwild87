@@ -48,7 +48,7 @@ func _calc_attack(delta: float) -> void:
 		attack_cooldown -= delta
 		return
 		
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_pressed("attack"):
 		attack_cooldown = InitAttackCooldown
 		
 		var vector_forward = -body_mesh.basis.z
@@ -63,14 +63,7 @@ func _calc_attack(delta: float) -> void:
 				continue
 			
 			var enemy = target as Enemy
-			enemy.apply_damage(11.0)
-		
-		#debug draw
-		#attack_debug.global_position = global_position + vector_forward
-		#attack_debug.rotation.y = body_mesh.rotation.y
-		#attack_debug.visible = true
-		#await get_tree().create_timer(.5).timeout
-		#attack_debug.visible = false
+			enemy.apply_damage(InitAttackDamage)
 
 func _calc_upgrades() -> void:
 	attack_collision.shape.radius = InitAttackRadius
@@ -81,9 +74,14 @@ func _face_mouse() -> void:
 	var normal = camera_3d.project_ray_normal(mouse_pos)
 	var point = Plane.PLANE_XZ.intersects_ray(origin, normal)
 	if point:
-		body_mesh.look_at(point + Vector3.UP)
+		point.y = body_mesh.global_position.y
+		body_mesh.look_at(point)
 
 func apply_damage(damage: float) -> void:
 	health -= damage
 	if health <= 0:
-		print("die")
+		print("died")
+
+func apply_healing(healing: float) -> void:
+	var max_health = InitMaxHealth
+	health = min(health + healing, max_health)
