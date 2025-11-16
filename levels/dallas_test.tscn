@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfsas1s5a04fs"]
+
+[ext_resource type="PackedScene" uid="uid://vii2jisn0a4g" path="res://char/player.tscn" id="1_k8cdt"]
+[ext_resource type="PackedScene" uid="uid://dclgv8ycd5mv6" path="res://char/boss/big_boss.tscn" id="2_k8cdt"]
+[ext_resource type="PackedScene" uid="uid://dfqkscqbkwm6t" path="res://char/boss/ground_aoe/boss_aoe.tscn" id="3_4pttd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_46lwt"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_x25rp"]
+sky_material = SubResource("ProceduralSkyMaterial_46lwt")
+
+[sub_resource type="Environment" id="Environment_gmgay"]
+background_mode = 2
+sky = SubResource("Sky_x25rp")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_46lwt"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46lwt"]
+albedo_color = Color(0.32544088, 0.3254409, 0.32544088, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_46lwt"]
+points = PackedVector3Array(-50, 0, -50, -50, 0, 50, 50, 0, -50, 50, 0, 50)
+
+[node name="DallasTestLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gmgay")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_k8cdt")]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_46lwt")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_46lwt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("ConvexPolygonShape3D_46lwt")
+
+[node name="BigBoss" parent="." instance=ExtResource("2_k8cdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.486537, 0, 0)
+speed = 5.0
+aoe_count_on_cast = 5
+aoe_distance_from_player = 5.0
+aoe_scene = ExtResource("3_4pttd")
