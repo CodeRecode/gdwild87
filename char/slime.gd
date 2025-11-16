@@ -1,8 +1,12 @@
 extends Enemy
 
 @export var Speed = 5.0
+@export var Health = 10.0
 
 var target: Player
+
+func _ready() -> void:
+	set_health(Health)
 
 func _physics_process(delta: float) -> void:
 	var delta_speed = Speed * delta * Engine.physics_ticks_per_second

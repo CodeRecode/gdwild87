@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Jam Template"
+config/name="gdwild87"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

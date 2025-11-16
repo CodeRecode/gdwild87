@@ -61,7 +61,7 @@ func _calc_attack(delta: float) -> void:
 				continue
 			
 			var enemy = target as Enemy
-			enemy.apply_damage(1.0)
+			enemy.apply_damage(11.0)
 		
 		#debug draw
 		#attack_debug.global_position = global_position + vector_forward
