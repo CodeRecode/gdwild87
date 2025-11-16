@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://dclgv8ycd5mv6"]
+
+[ext_resource type="Script" uid="uid://4gdpku7d7aq0" path="res://char/boss/big_boss.gd" id="1_504yr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nug5l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0wg35"]
+
+[node name="BigBoss" type="CharacterBody3D"]
+script = ExtResource("1_504yr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_nug5l")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_0wg35")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+radius = 3.0
+height = 11.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_right = 12.0
+offset_bottom = 137.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 25
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/MarginContainer"]
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 2
+show_percentage = false
+
+[node name="CastTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 4.0
+autostart = true
