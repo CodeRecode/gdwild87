@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl80gswoyw5c0"]
+
+[ext_resource type="Script" uid="uid://d07pwhri7a8hl" path="res://upgrades/coin.gd" id="1_sgidx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sipj8"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+refraction_enabled = true
+disable_receive_shadows = true
+
+[node name="Coin" type="Node3D"]
+script = ExtResource("1_sgidx")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+height = 0.1
+material = SubResource("StandardMaterial3D_sipj8")

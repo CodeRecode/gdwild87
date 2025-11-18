@@ -22,6 +22,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
 UISound="*res://ui/ui_sound.tscn"
 MusicManager="*res://audio/music/music_manager.tscn"
+Bank="*res://upgrades/bank.gd"
 
 [display]
 

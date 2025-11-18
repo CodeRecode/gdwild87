@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfsas1s5a04fs"]
+[gd_scene load_steps=12 format=3 uid="uid://bfsas1s5a04fs"]
 
 [ext_resource type="PackedScene" uid="uid://vii2jisn0a4g" path="res://char/player.tscn" id="1_k8cdt"]
 [ext_resource type="PackedScene" uid="uid://dclgv8ycd5mv6" path="res://char/boss/big_boss.tscn" id="2_k8cdt"]
 [ext_resource type="PackedScene" uid="uid://dfqkscqbkwm6t" path="res://char/boss/ground_aoe/boss_aoe.tscn" id="3_4pttd"]
+[ext_resource type="PackedScene" uid="uid://d2u70jb4lidb8" path="res://ui/gameplay_ui/gameplay_ui.tscn" id="4_n4bmk"]
+[ext_resource type="PackedScene" uid="uid://b44yecwsemryk" path="res://char/slime.tscn" id="5_to3e4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_46lwt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -52,3 +54,8 @@ speed = 5.0
 aoe_count_on_cast = 5
 aoe_distance_from_player = 5.0
 aoe_scene = ExtResource("3_4pttd")
+
+[node name="GameplayUI" parent="." instance=ExtResource("4_n4bmk")]
+
+[node name="Slime" parent="." instance=ExtResource("5_to3e4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)

@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2u70jb4lidb8"]
+
+[ext_resource type="Script" uid="uid://bvar2hemia43j" path="res://ui/gameplay_ui/gameplay_ui.gd" id="1_mi13y"]
+
+[sub_resource type="Gradient" id="Gradient_mi13y"]
+offsets = PackedFloat32Array(0, 0.9940653)
+colors = PackedColorArray(1, 0.09411765, 0.11764706, 1, 0.04773137, 0.7048209, 1.92523e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f680n"]
+gradient = SubResource("Gradient_mi13y")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi13y"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f680n"]
+
+[node name="GameplayUI" type="CanvasLayer"]
+script = ExtResource("1_mi13y")
+healthbar_gradient = SubResource("GradientTexture1D_f680n")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="CoinTexture" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CoinsLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="Healthbar" type="ProgressBar" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_mi13y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f680n")
+show_percentage = false

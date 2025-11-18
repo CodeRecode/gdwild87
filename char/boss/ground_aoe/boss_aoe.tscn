@@ -461,6 +461,7 @@ draw_pass_1 = SubResource("QuadMesh_2dm04")
 
 [node name="DamageTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 1.5999999999999999
 one_shot = true
 autostart = true
 
