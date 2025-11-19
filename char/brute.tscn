@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://666nns6li08s"]
+[gd_scene load_steps=8 format=3 uid="uid://666nns6li08s"]
 
 [ext_resource type="Script" uid="uid://c3q6p7pf858r1" path="res://char/brute.gd" id="1_7sjr5"]
+[ext_resource type="PackedScene" uid="uid://t6743nju3d8a" path="res://art/hulk.glb" id="2_63k8u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7sjr5"]
 radius = 0.75
@@ -23,8 +24,12 @@ script = ExtResource("1_7sjr5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CapsuleShape3D_7sjr5")
 
+[node name="hulk" parent="." instance=ExtResource("2_63k8u")]
+transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0, 0.49899673, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.5, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_7sjr5")
 skeleton = NodePath("../CollisionShape3D")
 
