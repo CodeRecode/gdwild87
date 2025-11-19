@@ -4,10 +4,14 @@ extends Enemy
 @export var Health = 10.0
 @export var AttackDamage = 2.0
 
+@onready var animation_player: AnimationPlayer = $slime/AnimationPlayer
+
 var target: Player
 var can_attack: bool = false
 
 func _ready() -> void:
+	animation_player.play("Wobble")
+	animation_player.seek(randf() * animation_player.current_animation.length())
 	set_health(Health)
 
 func _physics_process(delta: float) -> void:

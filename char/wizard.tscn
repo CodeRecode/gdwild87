@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxu5sn7xh1gkk"]
+[gd_scene load_steps=9 format=3 uid="uid://dxu5sn7xh1gkk"]
 
 [ext_resource type="Script" uid="uid://dtq830i2blg3x" path="res://char/wizard.gd" id="1_dp7gs"]
 [ext_resource type="PackedScene" uid="uid://c3xvjao22qcv5" path="res://char/wizard_orb.tscn" id="2_3owjg"]
+[ext_resource type="PackedScene" uid="uid://bci24l2338ee1" path="res://art/mushroom.glb" id="3_vx3cw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dp7gs"]
 
@@ -22,8 +23,12 @@ Projectile = ExtResource("2_3owjg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_dp7gs")
 
+[node name="mushroom" parent="." instance=ExtResource("3_vx3cw")]
+transform = Transform3D(-0.75, 0, -6.556708e-08, 0, 0.75, 0, 6.556708e-08, 0, -0.75, 0, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_dp7gs")
 skeleton = NodePath("../CollisionShape3D")
 
