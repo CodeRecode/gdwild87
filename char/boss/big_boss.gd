@@ -1,7 +1,6 @@
 extends Enemy
 
 @export var speed: float
-@export var initial_health: float
 @export var aoe_count_on_cast: int
 @export var aoe_distance_from_player: float
 @export var aoe_scene: PackedScene
@@ -13,12 +12,11 @@ var target: Player
 
 func _ready() -> void:
 	cast_timer.timeout.connect(cast)
-	set_health(initial_health)
 
 func _process(_delta: float) -> void:
-	healthbar.max_value = initial_health
-	healthbar.value = health
-	health_label.text = str(int(healthbar.max_value)) + " / " + str(int(healthbar.value))
+	healthbar.max_value = health_component.max_health
+	healthbar.value = health_component.current_health
+	health_label.text = str(int(healthbar.value)) + " / " + str(int(healthbar.max_value))
 
 func _physics_process(delta: float) -> void:
 	var delta_speed = speed * delta * Engine.physics_ticks_per_second

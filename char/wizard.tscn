@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxu5sn7xh1gkk"]
+[gd_scene load_steps=13 format=3 uid="uid://dxu5sn7xh1gkk"]
 
 [ext_resource type="Script" uid="uid://dtq830i2blg3x" path="res://char/wizard.gd" id="1_dp7gs"]
 [ext_resource type="PackedScene" uid="uid://c3xvjao22qcv5" path="res://char/wizard_orb.tscn" id="2_3owjg"]
+[ext_resource type="Script" uid="uid://chnk2opxuoatb" path="res://char/components/health_component.gd" id="2_vx3cw"]
+[ext_resource type="Script" uid="uid://d4c8iopppijdj" path="res://char/components/hurtbox.gd" id="3_actlc"]
+[ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="4_actlc"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dp7gs"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_actlc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dp7gs"]
 
@@ -14,18 +17,22 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_f1ur6"]
 radius = 15.0
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dp7gs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mb7o6"]
+
 [node name="Wizard" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_dp7gs")
-Projectile = ExtResource("2_3owjg")
+projectile = ExtResource("2_3owjg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PhysicsCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_dp7gs")
+shape = SubResource("CapsuleShape3D_actlc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_dp7gs")
-skeleton = NodePath("../CollisionShape3D")
+skeleton = NodePath("../Hurtbox/CollisionShape3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(0.70542645, 0, 0, 0, 0.32487965, 0, 0, 0, 0.32012045, 0, 0.37948835, -0.56381226)
@@ -39,6 +46,32 @@ mesh = SubResource("PrismMesh_dp7gs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Vision"]
 shape = SubResource("SphereShape3D_f1ur6")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_vx3cw")
+max_health = 10.0
+metadata/_custom_type_script = "uid://chnk2opxuoatb"
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 256
+collision_mask = 2
+script = ExtResource("3_actlc")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://d4c8iopppijdj"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_dp7gs")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 128
+script = ExtResource("4_actlc")
+continuous_hit = true
+metadata/_custom_type_script = "uid://i3tg6myj42l1"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_mb7o6")
 
 [connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]

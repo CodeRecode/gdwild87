@@ -2,21 +2,17 @@ extends CharacterBody3D
 class_name Enemy
 
 @export var gold_dropped: int = 1
-var health = 10.
-var max_health = 10.
 
 @onready var coin_scene: PackedScene = preload("res://upgrades/coin.tscn")
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var hurtbox: Hurtbox = $Hurtbox
+@onready var hitbox: Hitbox = $Hitbox
 
-func set_health(new_health: float) -> void:
-	max_health = new_health
-	health = max_health
+func _ready() -> void:
+	health_component.died.connect(_on_die)
+	hurtbox.health_component = health_component
 
-func apply_damage(damage: float) -> void:
-	health -= damage
-	if health <= 0:
-		on_die()
-
-func on_die() -> void:
+func _on_die() -> void:
 	_spawn_coins()
 	queue_free()
 

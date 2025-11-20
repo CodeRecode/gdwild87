@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://nilt05mrlccp"]
+
+[ext_resource type="Shader" uid="uid://bvy10bifhkfx1" path="res://char/lightning/lightning.gdshader" id="1_77x3h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyvo3"]
+render_priority = 0
+shader = ExtResource("1_77x3h")
+shader_parameter/scroll_speed = 3.0
+shader_parameter/noise_scale = 4.0
+shader_parameter/glow_color = Color(0.5, 0.8, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8qvj3"]
+size = Vector2(0.5, 1)
+
+[node name="ChainLightning" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_pyvo3")
+mesh = SubResource("QuadMesh_8qvj3")

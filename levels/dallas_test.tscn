@@ -41,6 +41,7 @@ shadow_enabled = true
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11805725, -1.220768, 1.6073608)
 mesh = SubResource("PlaneMesh_46lwt")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_46lwt")

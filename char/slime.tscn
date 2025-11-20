@@ -1,41 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://b44yecwsemryk"]
+[gd_scene load_steps=10 format=3 uid="uid://b44yecwsemryk"]
 
 [ext_resource type="Script" uid="uid://l8ao3h7j6uyl" path="res://char/slime.gd" id="1_f1ur6"]
+[ext_resource type="Script" uid="uid://chnk2opxuoatb" path="res://char/components/health_component.gd" id="2_20bwj"]
+[ext_resource type="Script" uid="uid://d4c8iopppijdj" path="res://char/components/hurtbox.gd" id="3_r5hft"]
+[ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="4_2w3jn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pq3se"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_pq3se"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_20bwj"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_f1ur6"]
 radius = 10.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vsyml"]
-radius = 0.75
+[sub_resource type="SphereShape3D" id="SphereShape3D_y87ci"]
 
 [node name="Slime" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_f1ur6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PhysicsCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_pq3se")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("SphereMesh_pq3se")
-skeleton = NodePath("../CollisionShape3D")
+skeleton = NodePath("../PhysicsCollision")
+
+[node name="Hitbox" type="Area3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_2w3jn")
+continuous_hit = true
+damage = 1.0
+metadata/_custom_type_script = "uid://i3tg6myj42l1"
+
+[node name="HitboxCollision" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_20bwj")
 
 [node name="Vision" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Vision"]
 shape = SubResource("SphereShape3D_f1ur6")
 
-[node name="AttackArea" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+unique_name_in_owner = true
+collision_layer = 256
+collision_mask = 2
+script = ExtResource("3_r5hft")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://d4c8iopppijdj"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+[node name="HurtboxCollision" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("SphereShape3D_vsyml")
+shape = SubResource("SphereShape3D_y87ci")
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_20bwj")
+metadata/_custom_type_script = "uid://chnk2opxuoatb"
 
 [connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
-[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
-[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]

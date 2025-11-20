@@ -15,8 +15,8 @@ func _process(_delta: float) -> void:
 		player = get_tree().get_first_node_in_group("player")
 		return
 
-	healthbar.max_value = player.InitMaxHealth
-	healthbar.value = player.health
+	healthbar.max_value = player.health_component.max_health
+	healthbar.value = player.health_component.current_health
 	var hp_percent := healthbar.max_value / healthbar.value
 	healthbar.get("theme_override_styles/fill").bg_color = healthbar_gradient.gradient.sample(hp_percent)
 
