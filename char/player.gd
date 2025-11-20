@@ -20,6 +20,7 @@ var speed: float = 0
 var attack_level: int = 0
 var attack_speed_level: int = 0
 var attack_range_level: int = 0
+var	attack_animation_play_speed: float
 
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var body_mesh: MeshInstance3D = $Body
@@ -32,6 +33,7 @@ var attack_range_level: int = 0
 func _ready() -> void:
 	attack_hitbox.damage = initial_attack_damage
 	animation_player.animation_finished.connect(_on_animation_finished)
+	attack_animation_play_speed = animation_player.get_animation("attack").length
 
 func _process(_delta: float) -> void:
 	attack_hitbox.damage = calculate_value_from_curve(initial_attack_damage, attack_level, attack_curve) 
@@ -46,6 +48,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 
+	if attack_timer.is_stopped():
+		if Input.is_action_pressed("attack"):
+			animation_player.play("attack")	
+			_on_attack()
+		if Input.is_action_pressed("attack_2"):
+			_on_attack()
+
 	var delta_speed = speed * delta * Engine.physics_ticks_per_second
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -58,16 +67,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func _input(event: InputEvent) -> void:
-	if not attack_timer.is_stopped():
-		return
-	if event.is_action_pressed("attack"):
-		animation_player.play("attack")	
-		_on_attack()
-	if event.is_action_pressed("attack_2"):
-
-		_on_attack()
-
 func calculate_value_from_curve(initial_val: float, level: int, curve: Curve) -> float:
 	return initial_val + curve.sample(level)
 
@@ -83,6 +82,7 @@ func _face_mouse() -> void:
 func _on_attack() -> void:
 	attack_timer.wait_time = initial_attack_speed * attack_speed_curve.sample(attack_speed_level)
 	attack_timer.start()
+	animation_player.speed_scale = 1 / attack_speed_curve.sample(attack_speed_level)
 
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":

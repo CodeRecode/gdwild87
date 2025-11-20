@@ -6,7 +6,8 @@
 [ext_resource type="Script" uid="uid://d4c8iopppijdj" path="res://char/components/hurtbox.gd" id="3_actlc"]
 [ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="4_actlc"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_actlc"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5akip"]
+radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dp7gs"]
 
@@ -22,12 +23,14 @@ radius = 15.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mb7o6"]
 
 [node name="Wizard" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 32768
+collision_mask = 32768
 script = ExtResource("1_dp7gs")
 projectile = ExtResource("2_3owjg")
 
 [node name="PhysicsCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_actlc")
+shape = SubResource("CapsuleShape3D_5akip")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

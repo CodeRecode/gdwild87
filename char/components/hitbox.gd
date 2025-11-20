@@ -17,4 +17,3 @@ func _physics_process(_delta: float) -> void:
 func _on_area_entered(area: Area3D) -> void:
 	if area is Hurtbox:
 		area.take_damage(damage)
-		print("doing dmg")

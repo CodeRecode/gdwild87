@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dclgv8ycd5mv6"]
+[gd_scene load_steps=9 format=3 uid="uid://dclgv8ycd5mv6"]
 
 [ext_resource type="Script" uid="uid://4gdpku7d7aq0" path="res://char/boss/big_boss.gd" id="1_504yr"]
 [ext_resource type="Script" uid="uid://chnk2opxuoatb" path="res://char/components/health_component.gd" id="2_nug5l"]
 [ext_resource type="Script" uid="uid://d4c8iopppijdj" path="res://char/components/hurtbox.gd" id="3_mtx48"]
 [ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="4_dq70y"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nug5l"]
-radius = 3.085
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtx48"]
+radius = 2.4
 height = 13.498203
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_504yr"]
@@ -20,13 +20,17 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nug5l"]
 bg_color = Color(0.80782366, 0.0025471516, 4.813075e-07, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nug5l"]
+radius = 3.085
+height = 13.498203
+
 [node name="BigBoss" type="CharacterBody3D"]
 script = ExtResource("1_504yr")
 speed = 4.0
 
 [node name="PhysicsCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7210374, 0)
-shape = SubResource("CapsuleShape3D_nug5l")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7497544, 0)
+shape = SubResource("CapsuleShape3D_mtx48")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)

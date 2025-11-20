@@ -9,7 +9,7 @@ border_width_bottom = 4
 border_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2wmt"]
-bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+bg_color = Color(0.16658005, 0.10945957, 0.042424373, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -17,7 +17,7 @@ border_width_bottom = 4
 border_color = Color(0.627451, 0.5058824, 0.14117648, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyvsd"]
-bg_color = Color(0.043137256, 0.047058824, 0.050980393, 1)
+bg_color = Color(0.25969425, 0.12942797, 0.07160061, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -122,10 +122,11 @@ border_color = Color(0.41960785, 0.24313726, 0.14901961, 1)
 
 [resource]
 Button/colors/font_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
-Button/colors/font_focus_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
-Button/colors/font_hover_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
+Button/colors/font_focus_color = Color(0.64349955, 0.7251789, 0.31988743, 1)
+Button/colors/font_hover_color = Color(0.67560595, 0.7598297, 0.34557074, 1)
 Button/colors/font_hover_pressed_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
 Button/colors/font_pressed_color = Color(0.60784316, 0.6862745, 0.29411766, 1)
+Button/font_sizes/font_size = 50
 Button/styles/disabled = SubResource("StyleBoxFlat_qaqce")
 Button/styles/focus = SubResource("StyleBoxFlat_q2wmt")
 Button/styles/hover = SubResource("StyleBoxFlat_eyvsd")
@@ -137,6 +138,7 @@ HSlider/icons/grabber_highlight = SubResource("MeshTexture_5ke63")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_co3lq")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_alk7s")
 HSlider/styles/slider = SubResource("StyleBoxFlat_5ke63")
+Label/font_sizes/font_size = 30
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
