@@ -1,7 +1,6 @@
 extends Enemy
 
 @export var Speed = 5.0
-@export var Health = 50.0
 @export var AttackDamage = 5.0
 @export var AttackWindupTime = 2.0
 @export var AttackWinddownTime = 0.5
@@ -9,9 +8,6 @@ extends Enemy
 var target: Player
 var is_in_attack_area: bool = false
 var attacking: bool = false
-
-func _ready() -> void:
-	set_health(Health)
 
 func _physics_process(delta: float) -> void:
 	if attacking:
@@ -27,6 +23,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, delta_speed)
 		velocity.z = move_toward(velocity.z, 0, delta_speed)
+		target = get_tree().get_first_node_in_group("player")
+
 	move_and_slide()
 	
 	_try_attack()

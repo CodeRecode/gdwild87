@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Enemy
 
 @export var speed: float
 @export var aoe_count_on_cast: int
@@ -6,10 +6,17 @@ extends CharacterBody3D
 @export var aoe_scene: PackedScene
 var target: Player
 
+@onready var healthbar: ProgressBar = %HealthBar
+@onready var health_label: Label = %HealthLabel
 @onready var cast_timer: Timer = %CastTimer
 
 func _ready() -> void:
 	cast_timer.timeout.connect(cast)
+
+func _process(_delta: float) -> void:
+	healthbar.max_value = health_component.max_health
+	healthbar.value = health_component.current_health
+	health_label.text = str(int(healthbar.value)) + " / " + str(int(healthbar.max_value))
 
 func _physics_process(delta: float) -> void:
 	var delta_speed = speed * delta * Engine.physics_ticks_per_second

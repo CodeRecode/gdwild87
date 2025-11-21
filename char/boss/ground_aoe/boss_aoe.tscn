@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dfqkscqbkwm6t"]
+[gd_scene load_steps=80 format=3 uid="uid://dfqkscqbkwm6t"]
 
 [ext_resource type="Script" uid="uid://cmbyixxbsces4" path="res://particles/play_particle_systems.gd" id="1_41sfy"]
 [ext_resource type="Script" uid="uid://dm2lkbmvj6m6g" path="res://char/boss/ground_aoe/boss_aoe.gd" id="1_oxy1x"]
@@ -12,10 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dqk00ciciqmcu" path="res://particles/wavy_alpha.png" id="8_723jg"]
 [ext_resource type="ArrayMesh" uid="uid://bf81s6irc1f1g" path="res://char/boss/ground_aoe/hemisphere.obj" id="9_62u8x"]
 [ext_resource type="Texture2D" uid="uid://53cktcivat7s" path="res://particles/bigger_empty_circle.png" id="10_lgj8i"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sgh0x"]
-radius = 2.3
-height = 8.446
+[ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="13_41sfy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8h1p3"]
 transparency = 1
@@ -349,15 +346,12 @@ alpha_curve = SubResource("CurveTexture_r14g7")
 
 [sub_resource type="QuadMesh" id="QuadMesh_2dm04"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b1jyr"]
+radius = 2.2
+height = 10.0
+
 [node name="BossAoE" type="Node3D"]
 script = ExtResource("1_oxy1x")
-
-[node name="Area3D" type="Area3D" parent="."]
-unique_name_in_owner = true
-monitoring = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CapsuleShape3D_sgh0x")
 
 [node name="Particles" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -461,6 +455,7 @@ draw_pass_1 = SubResource("QuadMesh_2dm04")
 
 [node name="DamageTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 1.6
 one_shot = true
 autostart = true
 
@@ -469,3 +464,13 @@ unique_name_in_owner = true
 wait_time = 2.55
 one_shot = true
 autostart = true
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 128
+monitoring = false
+script = ExtResource("13_41sfy")
+damage = 1.0
+metadata/_custom_type_script = "uid://i3tg6myj42l1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("CapsuleShape3D_b1jyr")

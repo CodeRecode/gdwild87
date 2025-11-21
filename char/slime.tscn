@@ -1,58 +1,65 @@
-[gd_scene load_steps=9 format=3 uid="uid://b44yecwsemryk"]
+[gd_scene load_steps=10 format=3 uid="uid://b44yecwsemryk"]
 
 [ext_resource type="Script" uid="uid://l8ao3h7j6uyl" path="res://char/slime.gd" id="1_f1ur6"]
 [ext_resource type="PackedScene" uid="uid://bo5axja88a8lc" path="res://art/slime.glb" id="2_vsyml"]
-[ext_resource type="Shader" uid="uid://cuhyccc3urd83" path="res://shaders/slime.gdshader" id="3_y87ci"]
+[ext_resource type="Script" uid="uid://chnk2opxuoatb" path="res://char/components/health_component.gd" id="3_r5hft"]
+[ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="4_2w3jn"]
+[ext_resource type="Script" uid="uid://d4c8iopppijdj" path="res://char/components/hurtbox.gd" id="5_xhnl2"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_pq3se"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_2w3jn"]
+radius = 0.3
 
 [sub_resource type="SphereMesh" id="SphereMesh_pq3se"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_20bwj"]
-render_priority = 0
-shader = ExtResource("3_y87ci")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f1ur6"]
 radius = 10.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vsyml"]
-radius = 0.75
+[sub_resource type="SphereShape3D" id="SphereShape3D_r5hft"]
+radius = 0.4
 
 [node name="Slime" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_f1ur6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("SphereShape3D_pq3se")
+[node name="PhysicsCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32849085, 0)
+shape = SubResource("SphereShape3D_2w3jn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 mesh = SubResource("SphereMesh_pq3se")
-skeleton = NodePath("../CollisionShape3D")
+skeleton = NodePath("../PhysicsCollision")
 
 [node name="slime" parent="." instance=ExtResource("2_vsyml")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.18779773, 0)
-
-[node name="Slime" parent="slime/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.18816191, 0)
-material_override = SubResource("ShaderMaterial_20bwj")
-"blend_shapes/Key 1" = 1.0
 
 [node name="Vision" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Vision"]
 shape = SubResource("SphereShape3D_f1ur6")
 
-[node name="AttackArea" type="Area3D" parent="."]
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_r5hft")
+max_health = 20.0
+metadata/_custom_type_script = "uid://chnk2opxuoatb"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("SphereShape3D_vsyml")
+[node name="Hitbox" type="Area3D" parent="."]
+script = ExtResource("4_2w3jn")
+continuous_hit = true
+metadata/_custom_type_script = "uid://i3tg6myj42l1"
+
+[node name="HitboxCollision" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32849085, 0)
+shape = SubResource("SphereShape3D_r5hft")
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_xhnl2")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://d4c8iopppijdj"
+
+[node name="HurtboxCollision" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32849085, 0)
+shape = SubResource("SphereShape3D_r5hft")
 
 [connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
-[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
-[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
-
-[editable path="slime"]

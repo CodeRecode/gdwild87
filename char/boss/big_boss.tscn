@@ -1,21 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dclgv8ycd5mv6"]
+[gd_scene load_steps=9 format=3 uid="uid://dclgv8ycd5mv6"]
 
 [ext_resource type="Script" uid="uid://4gdpku7d7aq0" path="res://char/boss/big_boss.gd" id="1_504yr"]
+[ext_resource type="Script" uid="uid://chnk2opxuoatb" path="res://char/components/health_component.gd" id="2_nug5l"]
+[ext_resource type="Script" uid="uid://d4c8iopppijdj" path="res://char/components/hurtbox.gd" id="3_mtx48"]
+[ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="4_dq70y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtx48"]
+radius = 2.4
+height = 13.498203
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_504yr"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nug5l"]
+bg_color = Color(0.80782366, 0.0025471516, 4.813075e-07, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nug5l"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0wg35"]
+radius = 3.085
+height = 13.498203
 
 [node name="BigBoss" type="CharacterBody3D"]
 script = ExtResource("1_504yr")
+speed = 4.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_nug5l")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CapsuleShape3D_0wg35")
+[node name="PhysicsCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7497544, 0)
+shape = SubResource("CapsuleShape3D_mtx48")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
@@ -37,11 +52,62 @@ size_flags_vertical = 4
 theme_override_constants/margin_top = 25
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/MarginContainer"]
-custom_minimum_size = Vector2(500, 20)
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 35)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_504yr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nug5l")
+value = 100.0
 show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/MarginContainer/HealthBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "100/100"
 
 [node name="CastTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 4.0
 autostart = true
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_nug5l")
+max_health = 100.0
+metadata/_custom_type_script = "uid://chnk2opxuoatb"
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.476034, 0)
+collision_layer = 256
+collision_mask = 2
+script = ExtResource("3_mtx48")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://d4c8iopppijdj"
+
+[node name="HurtboxCollision" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.977009, 0)
+shape = SubResource("CapsuleShape3D_nug5l")
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4896443, 0)
+collision_layer = 128
+script = ExtResource("4_dq70y")
+continuous_hit = true
+damage = 1.0
+metadata/_custom_type_script = "uid://i3tg6myj42l1"
+
+[node name="HitboxCollision" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0337915, 0)
+shape = SubResource("CapsuleShape3D_nug5l")

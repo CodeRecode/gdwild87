@@ -23,6 +23,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
 UISound="*res://ui/ui_sound.tscn"
 MusicManager="*res://audio/music/music_manager.tscn"
+Bank="*res://upgrades/bank.gd"
 
 [display]
 
@@ -38,6 +39,7 @@ enemy=""
 [gui]
 
 theme/custom="uid://dxj1nu0srofui"
+theme/custom_font="uid://bksrjb1tc1qg3"
 
 [input]
 
@@ -75,6 +77,19 @@ attack={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(439, 20),"global_position":Vector2(448, 68),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+attack_2={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(522, 1),"global_position":Vector2(531, 47),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[layer_names]
+
+3d_physics/layer_1="player_hurtbox"
+3d_physics/layer_2="player_hitbox"
+3d_physics/layer_8="enemy_hitbox"
+3d_physics/layer_9="enemy_hurtbox"
+3d_physics/layer_16="floor"
 
 [physics]
 

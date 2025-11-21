@@ -38,6 +38,8 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_46lwt")]
 
 [node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 32769
+collision_mask = 32769
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 mesh = SubResource("PlaneMesh_46lwt")

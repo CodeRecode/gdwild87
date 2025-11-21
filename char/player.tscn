@@ -1,30 +1,169 @@
-[gd_scene load_steps=8 format=3 uid="uid://vii2jisn0a4g"]
+[gd_scene load_steps=19 format=3 uid="uid://vii2jisn0a4g"]
 
 [ext_resource type="Script" uid="uid://cafkvvlhm5hlf" path="res://char/player.gd" id="1_imniu"]
+[ext_resource type="Script" uid="uid://c4sbrn2byjqdp" path="res://char/lightning/chain_lightning_component.gd" id="2_ivbhp"]
+[ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="2_vx1ls"]
+[ext_resource type="Script" uid="uid://chnk2opxuoatb" path="res://char/components/health_component.gd" id="3_ivbhp"]
+[ext_resource type="Script" uid="uid://d4c8iopppijdj" path="res://char/components/hurtbox.gd" id="4_tdjx7"]
+
+[sub_resource type="Curve" id="Curve_ivbhp"]
+_limits = [0.0, 100.0, 0.0, 100.0]
+_data = [Vector2(0, 0), 0.0, 1.6372852, 0, 0, Vector2(100, 100), -0.05907446, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_vx1ls"]
+_limits = [0.0, 1.0, 0.0, 100.0]
+_data = [Vector2(0, 0), 0.0, 0.01563169, 0, 0, Vector2(100, 1), 0.008194039, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_n32fl"]
+_limits = [0.0, 1.0, 0.0, 100.0]
+_data = [Vector2(0.01369863, 0.9930407), 0.0, -0.021380024, 0, 0, Vector2(100, 0.18576014), -0.0059270137, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gp2u4"]
+_limits = [0.0, 10.0, 0.0, 100.0]
+_data = [Vector2(0, 0), 0.0, 0.15158008, 0, 0, Vector2(100, 10), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_tdjx7"]
+_limits = [0.0, 100.0, 0.0, 100.0]
+_data = [Vector2(0, 0), 0.0, 1.3189243, 0, 0, Vector2(100, 100), -1.265786e-06, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d1ks0"]
+radius = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vx1ls"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_imniu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_imniu"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_imniu"]
-size = Vector3(5.365, 1.855, 1.21)
+[sub_resource type="BoxShape3D" id="BoxShape3D_imniu"]
+size = Vector3(2, 3, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imniu"]
-transparency = 1
-albedo_color = Color(1, 0, 0, 0.5686275)
+[sub_resource type="Animation" id="Animation_rmstp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.0471976, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Sword:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.737993, 0.7367251, -0.6715994)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Sword/AttackHitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_imniu"]
-height = 3.4282227
-radius = 2.0
+[sub_resource type="Animation" id="Animation_imniu"]
+resource_name = "attack"
+length = 0.2
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Body/Sword")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.0471976, 0), Vector3(0, -2.5110927, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Sword:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.7, 0.737, -0.672), Vector3(0.7983675, 0.9364499, -0.7506108)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/Sword/AttackHitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rmstp"]
+_data = {
+&"RESET": SubResource("Animation_rmstp"),
+&"attack": SubResource("Animation_imniu")
+}
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 32768
+collision_mask = 32768
 script = ExtResource("1_imniu")
+speed_curve = SubResource("Curve_ivbhp")
+attack_curve = SubResource("Curve_vx1ls")
+initial_attack_speed = 1.2
+attack_speed_curve = SubResource("Curve_n32fl")
+attack_range_curve = SubResource("Curve_gp2u4")
+health_curve = SubResource("Curve_tdjx7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PhysicsCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_d1ks0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, 0, 20, 3.837)
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9545367, 0)
+collision_mask = 128
+script = ExtResource("4_tdjx7")
+health_component = NodePath("../HealthComponent")
+invulnerability_time = 1.0
+metadata/_custom_type_script = "uid://d4c8iopppijdj"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape3D_vx1ls")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -35,18 +174,39 @@ transform = Transform3D(0.675, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.39345932, -0.5
 mesh = SubResource("BoxMesh_imniu")
 skeleton = NodePath("../../Camera3D")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, 0, 15, 3.837)
+[node name="Sword" type="CSGBox3D" parent="Body"]
+transform = Transform3D(0.5, 0, -0.86602557, 0, 0.9999999, 0, 0.86602557, 0, 0.5, -0.737993, 0.7367251, -0.6715994)
+size = Vector3(2, 0.2, 0.2)
 
-[node name="AttackDebug" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.012911081, 0.6747166, -0.839794)
-top_level = true
-visible = false
-mesh = SubResource("PrismMesh_imniu")
-surface_material_override/0 = SubResource("StandardMaterial3D_imniu")
+[node name="AttackHitbox" type="Area3D" parent="Body/Sword"]
+unique_name_in_owner = true
+transform = Transform3D(0.9999999, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0)
+collision_layer = 2
+collision_mask = 256
+monitoring = false
+script = ExtResource("2_vx1ls")
 
-[node name="AttackArea" type="Area3D" parent="."]
+[node name="AttackCollision" type="CollisionShape3D" parent="Body/Sword/AttackHitbox"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+shape = SubResource("BoxShape3D_imniu")
 
-[node name="AttackCollision" type="CollisionShape3D" parent="AttackArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7141113, 0)
-shape = SubResource("CylinderShape3D_imniu")
+[node name="ChainLightningComponent" type="Node3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02255845, -0.9140949)
+script = ExtResource("2_ivbhp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_rmstp")
+}
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_ivbhp")
+max_health = 10.0
+metadata/_custom_type_script = "uid://chnk2opxuoatb"
