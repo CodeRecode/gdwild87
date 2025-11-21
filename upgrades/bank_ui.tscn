@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl137f0n8mll8"]
+[gd_scene load_steps=4 format=3 uid="uid://dl137f0n8mll8"]
 
 [ext_resource type="Script" uid="uid://bt2s3wtc44tvx" path="res://upgrades/bank_ui.gd" id="1_j26dd"]
+[ext_resource type="Script" uid="uid://cvmsqvirsyim4" path="res://upgrades/upgrade_container.gd" id="2_1uair"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_1uair"]
 color = Color(2.1658839e-06, 0.42321903, 0.15075275, 0.5411765)
@@ -58,107 +59,126 @@ text = "Cost"
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 
-[node name="UpgradeContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+[node name="AttackDamageContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_1uair")
+
+[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackDamageContainer"]
 layout_mode = 2
 
-[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer"]
-layout_mode = 2
-
-[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer/Hbox"]
+[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackDamageContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Attack Damage"
 
-[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer/Hbox"]
+[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackDamageContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "0"
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer/Hbox"]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackDamageContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 7
 text = "5"
 
-[node name="UpgradeContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+[node name="AttackSpeedContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_1uair")
+
+[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackSpeedContainer"]
 layout_mode = 2
 
-[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer2"]
-layout_mode = 2
-
-[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer2/Hbox"]
+[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackSpeedContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Attack Speed"
 
-[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer2/Hbox"]
+[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackSpeedContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "0"
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer2/Hbox"]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackSpeedContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 7
 text = "5"
 
-[node name="UpgradeContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+[node name="AttackRangeContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_1uair")
+
+[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackRangeContainer"]
 layout_mode = 2
 
-[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer3"]
-layout_mode = 2
-
-[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer3/Hbox"]
+[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackRangeContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Attack Range"
 
-[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer3/Hbox"]
+[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackRangeContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "0"
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer3/Hbox"]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/AttackRangeContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 7
 text = "5"
 
-[node name="UpgradeContainer5" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+[node name="MaxHealthContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_1uair")
+
+[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/MaxHealthContainer"]
 layout_mode = 2
 
-[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer5"]
-layout_mode = 2
-
-[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer5/Hbox"]
+[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/MaxHealthContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Max Health"
 
-[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer5/Hbox"]
+[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/MaxHealthContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "0"
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer5/Hbox"]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/MaxHealthContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 7
 text = "5"
 
-[node name="UpgradeContainer4" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+[node name="MovementSpeedContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_1uair")
+
+[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/MovementSpeedContainer"]
 layout_mode = 2
 
-[node name="Hbox" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer4"]
-layout_mode = 2
-
-[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer4/Hbox"]
+[node name="UpgradeName" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/MovementSpeedContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Movement Speed"
 
-[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer4/Hbox"]
+[node name="UpgradeLevel" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer/MovementSpeedContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "0"
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/UpgradeContainer4/Hbox"]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/MovementSpeedContainer/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 7
 text = "5"
+
+[node name="ExitButton" type="Button" parent="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "X"

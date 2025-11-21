@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2u70jb4lidb8"]
+[gd_scene load_steps=7 format=3 uid="uid://d2u70jb4lidb8"]
 
 [ext_resource type="Script" uid="uid://bvar2hemia43j" path="res://ui/gameplay_ui/gameplay_ui.gd" id="1_mi13y"]
+[ext_resource type="Texture2D" uid="uid://be7pneyrr4gux" path="res://art/coin.png" id="2_f680n"]
 
 [sub_resource type="Gradient" id="Gradient_mi13y"]
 offsets = PackedFloat32Array(0, 0.9940653)
@@ -18,6 +19,11 @@ border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f680n"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
 [node name="GameplayUI" type="CanvasLayer"]
 script = ExtResource("1_mi13y")
@@ -30,30 +36,56 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 0
+theme_override_constants/separation = 15
 
 [node name="CoinTexture" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
+texture = ExtResource("2_f680n")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CoinsLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 50
 text = "1"
 
 [node name="Healthbar" type="ProgressBar" parent="MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 30)
+custom_minimum_size = Vector2(400, 35)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_mi13y")
 theme_override_styles/fill = SubResource("StyleBoxFlat_f680n")
+value = 50.0
 show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="MarginContainer/Healthbar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -19.0
+offset_right = 25.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+text = "10/10"

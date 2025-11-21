@@ -15,11 +15,12 @@ class_name Player
 @export_category("health")
 @export var initial_health := 10.0
 @export var health_curve: Curve
-var speed_level: int = 0
+var attack_damage_level: int = 0 : set = _set_attack_damage_level
+var attack_speed_level: int = 0 : set = _set_attack_speed_level
+var attack_range_level: int = 0 : set = _set_attack_range_level
+var speed_level: int = 0 : set = _set_movespeed_level
+var health_level: int = 0 : set = _set_max_health_level
 var speed: float = 0
-var attack_level: int = 0
-var attack_speed_level: int = 0
-var attack_range_level: int = 0
 var	attack_animation_play_speed: float
 
 @onready var camera_3d: Camera3D = $Camera3D
@@ -31,13 +32,10 @@ var	attack_animation_play_speed: float
 @onready var health_component: HealthComponent = %HealthComponent
 
 func _ready() -> void:
+	speed = initial_speed
 	attack_hitbox.damage = initial_attack_damage
 	animation_player.animation_finished.connect(_on_animation_finished)
 	attack_animation_play_speed = animation_player.get_animation("attack").length
-
-func _process(_delta: float) -> void:
-	attack_hitbox.damage = calculate_value_from_curve(initial_attack_damage, attack_level, attack_curve) 
-	speed = calculate_value_from_curve(initial_speed, speed_level, speed_curve)
 
 func _physics_process(delta: float) -> void:
 	_face_mouse()
@@ -51,9 +49,9 @@ func _physics_process(delta: float) -> void:
 	if attack_timer.is_stopped():
 		if Input.is_action_pressed("attack"):
 			animation_player.play("attack")	
-			_on_attack()
+			attack_timer.start()
 		if Input.is_action_pressed("attack_2"):
-			_on_attack()
+			attack_timer.start()
 
 	var delta_speed = speed * delta * Engine.physics_ticks_per_second
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -67,9 +65,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func calculate_value_from_curve(initial_val: float, level: int, curve: Curve) -> float:
-	return initial_val + curve.sample(level)
-
 func _face_mouse() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 	var origin = camera_3d.project_ray_origin(mouse_pos)
@@ -79,11 +74,29 @@ func _face_mouse() -> void:
 		point.y = body_mesh.global_position.y
 		body_mesh.look_at(point)
 
-func _on_attack() -> void:
-	attack_timer.wait_time = initial_attack_speed * attack_speed_curve.sample(attack_speed_level)
-	attack_timer.start()
-	animation_player.speed_scale = 1 / attack_speed_curve.sample(attack_speed_level)
-
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
 		animation_player.play("RESET")
+
+func _set_attack_damage_level(value: int) -> void:
+	attack_damage_level = value
+	attack_hitbox.damage = initial_attack_damage + attack_curve.sample(attack_damage_level)
+
+func _set_attack_speed_level(value: int) -> void:
+	attack_speed_level = value
+	attack_timer.wait_time = initial_attack_speed * attack_speed_curve.sample(attack_speed_level)
+	animation_player.speed_scale = 1 / attack_speed_curve.sample(attack_speed_level)
+
+func _set_attack_range_level(value: int) -> void:
+	# TODO: implement this once character model is added
+	attack_range_level = value
+
+func _set_movespeed_level(value: int) -> void:
+	speed_level = value
+	speed = initial_speed + speed_curve.sample(speed_level)
+
+func _set_max_health_level(value: int) -> void:
+	health_level = value
+	var diff := health_component.max_health - health_component.current_health	
+	health_component.max_health = initial_health + health_curve.sample(health_level)	
+	health_component.current_health = health_component.max_health - diff
