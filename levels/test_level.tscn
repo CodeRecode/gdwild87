@@ -71,3 +71,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6568775, 0, -8.615801)
 
 [node name="Brute" parent="." instance=ExtResource("3_gmgay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.051046, 0, -9.465352)
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true

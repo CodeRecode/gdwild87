@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b44yecwsemryk"]
+[gd_scene load_steps=11 format=3 uid="uid://b44yecwsemryk"]
 
 [ext_resource type="Script" uid="uid://l8ao3h7j6uyl" path="res://char/slime.gd" id="1_f1ur6"]
 [ext_resource type="PackedScene" uid="uid://bo5axja88a8lc" path="res://art/slime.glb" id="2_vsyml"]
@@ -10,6 +10,12 @@
 radius = 0.3
 
 [sub_resource type="SphereMesh" id="SphereMesh_pq3se"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5hft"]
+albedo_color = Color(0.32513, 0.82, 0.23780002, 1)
+roughness = 0.23
+rim_enabled = true
+clearcoat_roughness = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f1ur6"]
 radius = 10.0
@@ -32,6 +38,9 @@ skeleton = NodePath("../PhysicsCollision")
 
 [node name="slime" parent="." instance=ExtResource("2_vsyml")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.18779773, 0)
+
+[node name="Slime" parent="slime/Armature/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_r5hft")
 
 [node name="Vision" type="Area3D" parent="."]
 
@@ -63,3 +72,5 @@ shape = SubResource("SphereShape3D_r5hft")
 
 [connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
+
+[editable path="slime"]

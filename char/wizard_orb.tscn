@@ -1,12 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3xvjao22qcv5"]
+[gd_scene load_steps=12 format=3 uid="uid://c3xvjao22qcv5"]
 
 [ext_resource type="Script" uid="uid://qhbtpsa7uxvm" path="res://char/wizard_orb.gd" id="1_1fxfp"]
 [ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="2_jbm8s"]
+[ext_resource type="Shader" uid="uid://dyb4mdc8fy26u" path="res://shaders/wizard_orb.gdshader" id="2_s60u3"]
+[ext_resource type="Texture2D" uid="uid://blyy45yf3odba" path="res://particles/wavy.png" id="3_e0lh2"]
+[ext_resource type="Texture2D" uid="uid://d016b4rev7lcd" path="res://particles/beam01.png" id="5_hhksh"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_2ngd5"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0lh2"]
+render_priority = 0
+shader = ExtResource("2_s60u3")
+shader_parameter/tex = ExtResource("3_e0lh2")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_1fxfp"]
 radius = 0.25
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e0lh2"]
+emission_shape_scale = Vector3(0.25, 0.25, 0.25)
+emission_shape = 1
+emission_sphere_radius = 1.0
+scale_min = 0.5
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhn5p"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.071225025, 0.37, 0.055499993, 1)
+albedo_texture = ExtResource("5_hhksh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_hhksh"]
+material = SubResource("StandardMaterial3D_jhn5p")
 
 [node name="WizardOrb" type="Node3D"]
 script = ExtResource("1_1fxfp")
@@ -14,6 +38,7 @@ script = ExtResource("1_1fxfp")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_2ngd5")
+surface_material_override/0 = SubResource("ShaderMaterial_e0lh2")
 
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 128
@@ -24,3 +49,9 @@ metadata/_custom_type_script = "uid://i3tg6myj42l1"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("SphereShape3D_1fxfp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 20
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_e0lh2")
+draw_pass_1 = SubResource("QuadMesh_hhksh")

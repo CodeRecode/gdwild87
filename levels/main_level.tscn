@@ -1,0 +1,97 @@
+[gd_scene load_steps=17 format=3 uid="uid://chrj5q5fyq6qn"]
+
+[ext_resource type="Material" uid="uid://clf65q5ek1r0" path="res://art/env/Ground037_1K-JPG.tres" id="1_55n5f"]
+[ext_resource type="PackedScene" uid="uid://vii2jisn0a4g" path="res://char/player.tscn" id="2_wg11f"]
+[ext_resource type="PackedScene" uid="uid://b44yecwsemryk" path="res://char/slime.tscn" id="2_yb8kn"]
+[ext_resource type="Shader" uid="uid://bdvov6gny60pw" path="res://shaders/darkness_particle.gdshader" id="3_yb8kn"]
+[ext_resource type="Texture2D" uid="uid://d016b4rev7lcd" path="res://particles/beam01.png" id="4_43k3a"]
+[ext_resource type="PackedScene" uid="uid://dxu5sn7xh1gkk" path="res://char/wizard.tscn" id="6_43k3a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ui8ej"]
+sky_top_color = Color(0.09339782, 0.12095105, 0.15765178, 1)
+sky_horizon_color = Color(0.3156039, 0.3147422, 0.31491742, 1)
+ground_horizon_color = Color(0.3156039, 0.3147422, 0.31491742, 1)
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_f0d1o"]
+sky_material = SubResource("ProceduralSkyMaterial_ui8ej")
+
+[sub_resource type="Environment" id="Environment_b06hd"]
+background_mode = 2
+sky = SubResource("Sky_f0d1o")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f0d1o"]
+size = Vector2(200, 200)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_imvmh"]
+
+[sub_resource type="Curve" id="Curve_imvmh"]
+_data = [Vector2(0.048913047, 0), 0.0, 0.0, 0, 0, Vector2(0.07608695, 0.7415731), 0.0, 0.0, 0, 0, Vector2(0.61956525, 0.61797756), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3du2i"]
+curve = SubResource("Curve_imvmh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_imvmh"]
+emission_shape_offset = Vector3(0, 2, 0)
+emission_shape_scale = Vector3(20, 1, 20)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 2.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 2, 0)
+scale_min = 10.0
+scale_max = 15.0
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_3du2i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b06hd"]
+render_priority = 0
+shader = ExtResource("3_yb8kn")
+shader_parameter/particle_tex = ExtResource("4_43k3a")
+
+[sub_resource type="QuadMesh" id="QuadMesh_f0d1o"]
+material = SubResource("ShaderMaterial_b06hd")
+
+[node name="EnvTest" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.3553136, 0.35531354, 0.35531357, 1)
+light_energy = 0.256
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b06hd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 32769
+collision_mask = 32769
+
+[node name="Ground" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = ExtResource("1_55n5f")
+mesh = SubResource("PlaneMesh_f0d1o")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_imvmh")
+
+[node name="Slime" parent="StaticBody3D" instance=ExtResource("2_yb8kn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1198235, 0, -17.381262)
+
+[node name="Player" parent="." instance=ExtResource("2_wg11f")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
+amount = 400
+lifetime = 2.0
+preprocess = 1.0
+fixed_fps = 20
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_imvmh")
+draw_pass_1 = SubResource("QuadMesh_f0d1o")
+
+[node name="Wizard" parent="." instance=ExtResource("6_43k3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0528526, 0.038403273, 13.656588)

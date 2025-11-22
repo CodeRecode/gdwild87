@@ -24,7 +24,7 @@ var speed: float = 0
 var	attack_animation_play_speed: float
 
 @onready var camera_3d: Camera3D = $Camera3D
-@onready var body_mesh: MeshInstance3D = $Body
+@onready var body_mesh: Node = $Body
 @onready var attack_collision: CollisionShape3D = %AttackCollision
 @onready var attack_hitbox: Hitbox = %AttackHitbox
 @onready var attack_timer: Timer = %AttackTimer

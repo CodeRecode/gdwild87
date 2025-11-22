@@ -1,10 +1,43 @@
-[gd_scene load_steps=19 format=3 uid="uid://vii2jisn0a4g"]
+[gd_scene load_steps=52 format=3 uid="uid://vii2jisn0a4g"]
 
 [ext_resource type="Script" uid="uid://cafkvvlhm5hlf" path="res://char/player.gd" id="1_imniu"]
 [ext_resource type="Script" uid="uid://c4sbrn2byjqdp" path="res://char/lightning/chain_lightning_component.gd" id="2_ivbhp"]
 [ext_resource type="Script" uid="uid://i3tg6myj42l1" path="res://char/components/hitbox.gd" id="2_vx1ls"]
 [ext_resource type="Script" uid="uid://chnk2opxuoatb" path="res://char/components/health_component.gd" id="3_ivbhp"]
 [ext_resource type="Script" uid="uid://d4c8iopppijdj" path="res://char/components/hurtbox.gd" id="4_tdjx7"]
+[ext_resource type="AnimationLibrary" uid="uid://b361k78851sue" path="res://art/player/sword and shield attack.fbx" id="5_ipm74"]
+[ext_resource type="PackedScene" uid="uid://d3fm8f30xw3g8" path="res://art/player/knight.fbx" id="5_n32fl"]
+[ext_resource type="AnimationLibrary" uid="uid://f6csi6fy2tfg" path="res://art/player/sword and shield attack (2).fbx" id="6_trhti"]
+[ext_resource type="AnimationLibrary" uid="uid://k72sx4kvwe1c" path="res://art/player/sword and shield attack (3).fbx" id="7_1bujj"]
+[ext_resource type="AnimationLibrary" uid="uid://csye2mtt01hdf" path="res://art/player/sword and shield attack (4).fbx" id="8_uexef"]
+[ext_resource type="AnimationLibrary" uid="uid://x40dvxg5mghi" path="res://art/player/sword and shield death.fbx" id="9_rro40"]
+[ext_resource type="AnimationLibrary" uid="uid://bpencl0tl5f6a" path="res://art/player/sword and shield death (2).fbx" id="10_l2j4v"]
+[ext_resource type="AnimationLibrary" uid="uid://djc2bvac3hosx" path="res://art/player/sword and shield idle.fbx" id="11_qje4m"]
+[ext_resource type="AnimationLibrary" uid="uid://dpm836kcxdcjt" path="res://art/player/sword and shield idle (2).fbx" id="12_jbjyd"]
+[ext_resource type="AnimationLibrary" uid="uid://bmo20vta41tl6" path="res://art/player/sword and shield idle (3).fbx" id="13_4y8cy"]
+[ext_resource type="AnimationLibrary" uid="uid://cr5n1ll436fb2" path="res://art/player/sword and shield idle (4).fbx" id="14_oe1fx"]
+[ext_resource type="AnimationLibrary" uid="uid://q515fx7yduad" path="res://art/player/sword and shield impact.fbx" id="15_yhgma"]
+[ext_resource type="AnimationLibrary" uid="uid://cxeue7t75qr2o" path="res://art/player/sword and shield impact (2).fbx" id="16_mrrml"]
+[ext_resource type="AnimationLibrary" uid="uid://r7ji8d5og75k" path="res://art/player/sword and shield impact (3).fbx" id="17_reak5"]
+[ext_resource type="AnimationLibrary" uid="uid://bmrskqg3bm7kd" path="res://art/player/sword and shield jump.fbx" id="18_svdov"]
+[ext_resource type="AnimationLibrary" uid="uid://bavbtdjf70nic" path="res://art/player/sword and shield jump (2).fbx" id="19_k3no5"]
+[ext_resource type="AnimationLibrary" uid="uid://dlbv3gqb5tqxw" path="res://art/player/sword and shield kick.fbx" id="20_yyw80"]
+[ext_resource type="AnimationLibrary" uid="uid://6s86xw6v8ff0" path="res://art/player/sword and shield power up.fbx" id="21_cfkt0"]
+[ext_resource type="AnimationLibrary" uid="uid://bdx7xd1ncnuwt" path="res://art/player/sword and shield run.fbx" id="22_2p7uk"]
+[ext_resource type="AnimationLibrary" uid="uid://clm3xwultx65c" path="res://art/player/sword and shield run (2).fbx" id="23_esurq"]
+[ext_resource type="AnimationLibrary" uid="uid://dkkpv2ukpp32o" path="res://art/player/sword and shield slash.fbx" id="24_iiuvy"]
+[ext_resource type="AnimationLibrary" uid="uid://cktw2yq54rlrf" path="res://art/player/sword and shield slash (2).fbx" id="25_ysc4u"]
+[ext_resource type="AnimationLibrary" uid="uid://bdy6hillmtxxd" path="res://art/player/sword and shield slash (3).fbx" id="26_cm4tq"]
+[ext_resource type="AnimationLibrary" uid="uid://bhp2lah12pu0t" path="res://art/player/sword and shield slash (4).fbx" id="27_xxlnn"]
+[ext_resource type="AnimationLibrary" uid="uid://bhr24x33bvq7a" path="res://art/player/sword and shield slash (5).fbx" id="28_j3ohh"]
+[ext_resource type="AnimationLibrary" uid="uid://7non4vd62ejj" path="res://art/player/sword and shield strafe.fbx" id="29_3boih"]
+[ext_resource type="AnimationLibrary" uid="uid://dpwtd2il5fs2h" path="res://art/player/sword and shield strafe (2).fbx" id="30_10mft"]
+[ext_resource type="AnimationLibrary" uid="uid://jlmxa3r8l03i" path="res://art/player/sword and shield strafe (3).fbx" id="31_1gsml"]
+[ext_resource type="AnimationLibrary" uid="uid://c3xee1n2m6eki" path="res://art/player/sword and shield strafe (4).fbx" id="32_r1wca"]
+[ext_resource type="AnimationLibrary" uid="uid://dljpiey4oarev" path="res://art/player/sword and shield turn.fbx" id="33_4yxfa"]
+[ext_resource type="AnimationLibrary" uid="uid://vebaw1h0bdy5" path="res://art/player/sword and shield turn (2).fbx" id="34_bd4dw"]
+[ext_resource type="AnimationLibrary" uid="uid://buo4f6h505isp" path="res://art/player/sword and shield walk.fbx" id="35_g58ac"]
+[ext_resource type="AnimationLibrary" uid="uid://bsbir8qy8xcur" path="res://art/player/sword and shield walk (2).fbx" id="36_w2iiv"]
 
 [sub_resource type="Curve" id="Curve_ivbhp"]
 _limits = [0.0, 100.0, 0.0, 100.0]
@@ -35,13 +68,6 @@ point_count = 2
 radius = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vx1ls"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_imniu"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_imniu"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_imniu"]
-size = Vector3(2, 3, 0.1)
 
 [sub_resource type="Animation" id="Animation_rmstp"]
 length = 0.001
@@ -135,6 +161,179 @@ _data = {
 &"attack": SubResource("Animation_imniu")
 }
 
+[sub_resource type="Animation" id="Animation_trg0p"]
+resource_name = "mixamo_com"
+length = 0.033333335
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D:mixamorig_Hips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 3.1958367e-05, 1.6645536, 0.0015288425)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton3D:mixamorig_Hips")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1.3572945e-07, 6.1526093e-06, -0.00019376235, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D:mixamorig_Spine")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.017548569, -9.551815e-06, 0.00019362455, 0.999846)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton3D:mixamorig_LeftUpLeg")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.0004986582, 0.011178722, -0.99972206, 0.020751337)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton3D:mixamorig_RightUpLeg")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.00028824786, -0.002121172, 0.9997903, 0.020365676)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton3D:mixamorig_LeftLeg")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.009373066, -0.0005641238, -0.04132438, 0.99910164)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton3D:mixamorig_RightLeg")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -0.02770016, 0.00014512727, 0.041295324, 0.9987629)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton3D:mixamorig_LeftFoot")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.46056333, -0.043955233, 0.029891804, 0.8860338)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton3D:mixamorig_RightFoot")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.47542503, 0.042077493, -0.029345868, 0.87825924)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("Skeleton3D:mixamorig_LeftShoulder")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, -0.50805664, -0.47352123, 0.56176543, -0.4495283)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("Skeleton3D:mixamorig_RightShoulder")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.5790635, -0.4377285, 0.49138656, 0.48126766)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("Skeleton3D:mixamorig_LeftArm")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -0.07162241, -0.028595291, 0.042013563, 0.99613625)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("Skeleton3D:mixamorig_RightArm")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -0.066252016, -0.111428894, 0.07516407, 0.98870856)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = true
+tracks/13/enabled = true
+tracks/13/path = NodePath("Skeleton3D:mixamorig_LeftForeArm")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, -6.9331264e-08, -0.002106109, -6.016882e-08, 0.9999978)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = true
+tracks/14/enabled = true
+tracks/14/path = NodePath("Skeleton3D:mixamorig_RightForeArm")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 2.3252558e-07, -0.0022352366, 2.4362146e-07, 0.9999975)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = true
+tracks/15/enabled = true
+tracks/15/path = NodePath("Skeleton3D:mixamorig_LeftHand")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, -1.0041838e-07, -0.0011087339, 1.971417e-07, 0.9999994)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = true
+tracks/16/enabled = true
+tracks/16/path = NodePath("Skeleton3D:mixamorig_RightHand")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, -1.9380774e-07, 0.0007627611, 2.1291802e-07, 0.9999997)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = true
+tracks/17/enabled = true
+tracks/17/path = NodePath("Skeleton3D:mixamorig_LeftHandIndex1")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 2.0013348e-07, -0.0012174543, -7.9860364e-08, 0.9999993)
+tracks/18/type = "rotation_3d"
+tracks/18/imported = true
+tracks/18/enabled = true
+tracks/18/path = NodePath("Skeleton3D:mixamorig_RightHandIndex1")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, 5.727766e-07, 0.6768423, -4.932497e-07, 0.7361281)
+tracks/19/type = "rotation_3d"
+tracks/19/imported = true
+tracks/19/enabled = true
+tracks/19/path = NodePath("Skeleton3D:mixamorig_LeftHandIndex2")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = PackedFloat32Array(0, 1, -0.06329461, -7.642855e-08, -0.09709583, 0.9932604)
+tracks/20/type = "rotation_3d"
+tracks/20/imported = true
+tracks/20/enabled = true
+tracks/20/path = NodePath("Skeleton3D:mixamorig_RightHandIndex2")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = PackedFloat32Array(0, 1, 0.27583453, 2.2514786e-08, -0.02077089, 0.9609807)
+tracks/21/type = "rotation_3d"
+tracks/21/imported = true
+tracks/21/enabled = true
+tracks/21/path = NodePath("Skeleton3D:mixamorig_LeftHandIndex3")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = PackedFloat32Array(0, 1, 0.107978724, 0.023328444, -0.014907492, 0.9937677)
+tracks/22/type = "rotation_3d"
+tracks/22/imported = true
+tracks/22/enabled = true
+tracks/22/path = NodePath("Skeleton3D:mixamorig_RightHandIndex3")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = PackedFloat32Array(0, 1, -0.106601864, -0.025852809, -0.03327565, 0.9934085)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_65hpl"]
+_data = {
+&"mixamo_com": SubResource("Animation_trg0p")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_imniu"]
+size = Vector3(2, 3, 0.1)
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 32768
 collision_mask = 32768
@@ -151,7 +350,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_d1ks0")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, 0, 20, 3.837)
+transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, 0, 10, 3.837)
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
 unique_name_in_owner = true
@@ -164,43 +363,6 @@ metadata/_custom_type_script = "uid://d4c8iopppijdj"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape3D_vx1ls")
-
-[node name="Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_imniu")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body"]
-transform = Transform3D(0.675, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.39345932, -0.59386504)
-mesh = SubResource("BoxMesh_imniu")
-skeleton = NodePath("../../Camera3D")
-
-[node name="Sword" type="CSGBox3D" parent="Body"]
-unique_name_in_owner = true
-transform = Transform3D(0.5, 0, -0.86602557, 0, 0.9999999, 0, 0.86602557, 0, 0.5, -0.737993, 0.7367251, -0.6715994)
-size = Vector3(2, 0.2, 0.2)
-
-[node name="AttackHitbox" type="Area3D" parent="Body/Sword"]
-unique_name_in_owner = true
-transform = Transform3D(0.9999999, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0)
-collision_layer = 2
-collision_mask = 256
-monitoring = false
-script = ExtResource("2_vx1ls")
-
-[node name="AttackCollision" type="CollisionShape3D" parent="Body/Sword/AttackHitbox"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
-shape = SubResource("BoxShape3D_imniu")
-
-[node name="ChainLightningComponent" type="Node3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02255845, -0.9140949)
-script = ExtResource("2_ivbhp")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3657274, -1.1450987)
-light_color = Color(0.8826207, 0.6789219, 0.41760263, 1)
-shadow_enabled = true
-omni_range = 20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -217,3 +379,105 @@ unique_name_in_owner = true
 script = ExtResource("3_ivbhp")
 max_health = 10.0
 metadata/_custom_type_script = "uid://chnk2opxuoatb"
+
+[node name="Body" parent="." instance=ExtResource("5_n32fl")]
+
+[node name="Skeleton3D" parent="Body" index="2"]
+bones/0/position = Vector3(0.009040118, 1.4197289, -0.0050421543)
+bones/0/rotation = Quaternion(0.074909195, -0.4550879, 0.0290342, 0.8868149)
+bones/1/rotation = Quaternion(0.04619746, 0.03219704, -0.02330951, 0.9981412)
+bones/2/rotation = Quaternion(0.010800661, 0.011436799, 0.020844169, 0.999659)
+bones/3/rotation = Quaternion(0.0019301765, 0.0109052025, 0.009616115, 0.99989253)
+bones/4/rotation = Quaternion(0.00021234524, 0.08533513, -0.013532847, 0.99626034)
+bones/5/rotation = Quaternion(-0.040575236, 0.20344004, -0.04919807, 0.97700834)
+bones/7/rotation = Quaternion(-0.5633984, -0.40398318, 0.5406615, -0.47651342)
+bones/8/rotation = Quaternion(0.33248335, 0.011790508, 0.1356382, 0.93323)
+bones/9/rotation = Quaternion(0.26703277, -0.20555806, 0.67128825, 0.6601602)
+bones/10/rotation = Quaternion(0.028648475, -0.00077920046, -0.00036716458, 0.9995892)
+bones/11/rotation = Quaternion(0.651614, 0.019631928, -0.0123158805, 0.75819665)
+bones/12/rotation = Quaternion(0.49585724, 0.07756796, -0.120102264, 0.85655373)
+bones/13/rotation = Quaternion(0.6352497, 0.14733931, -0.09273196, 0.75242925)
+bones/15/rotation = Quaternion(0.46749014, -0.46070194, 0.62337434, 0.42498365)
+bones/16/rotation = Quaternion(0.37385336, -0.108048886, 0.010835128, 0.92110896)
+bones/17/rotation = Quaternion(-0.110985756, 0.023137454, -0.595596, 0.79524356)
+bones/18/rotation = Quaternion(0.024592126, 0.001744925, -0.25291803, 0.9671735)
+bones/19/rotation = Quaternion(0.43551463, 0.59201103, 0.26739547, 0.623177)
+bones/20/rotation = Quaternion(0.42613247, 0.12479924, 0.47920284, 0.75710034)
+bones/21/rotation = Quaternion(0.049019337, 0.18362029, 0.39813033, 0.8974257)
+bones/23/rotation = Quaternion(0.37506583, 0.4241114, 0.8009686, -0.1946903)
+bones/24/rotation = Quaternion(-0.39379758, 0.12860583, -0.041851185, 0.9091934)
+bones/25/rotation = Quaternion(0.43453598, -0.08357709, -0.048306335, 0.89546627)
+bones/26/rotation = Quaternion(0.3638503, -0.0293927, -0.0064145206, 0.93097156)
+bones/28/rotation = Quaternion(-0.2483362, 0.2312646, 0.9061191, 0.252575)
+bones/29/rotation = Quaternion(-0.38098258, 0.003620825, -0.012945245, 0.92448455)
+bones/30/rotation = Quaternion(0.5355756, 0.1557933, 0.2119984, 0.80246127)
+bones/31/rotation = Quaternion(0.33660325, 0.052045047, -0.01695001, 0.9400545)
+
+[node name="Cube" parent="Body/Skeleton3D" index="0"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="Body" index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_65hpl"),
+&"sword and shield attack": ExtResource("5_ipm74"),
+&"sword and shield attack (2)": ExtResource("6_trhti"),
+&"sword and shield attack (3)": ExtResource("7_1bujj"),
+&"sword and shield attack (4)": ExtResource("8_uexef"),
+&"sword and shield death": ExtResource("9_rro40"),
+&"sword and shield death (2)": ExtResource("10_l2j4v"),
+&"sword and shield idle": ExtResource("11_qje4m"),
+&"sword and shield idle (2)": ExtResource("12_jbjyd"),
+&"sword and shield idle (3)": ExtResource("13_4y8cy"),
+&"sword and shield idle (4)": ExtResource("14_oe1fx"),
+&"sword and shield impact": ExtResource("15_yhgma"),
+&"sword and shield impact (2)": ExtResource("16_mrrml"),
+&"sword and shield impact (3)": ExtResource("17_reak5"),
+&"sword and shield jump": ExtResource("18_svdov"),
+&"sword and shield jump (2)": ExtResource("19_k3no5"),
+&"sword and shield kick": ExtResource("20_yyw80"),
+&"sword and shield power up": ExtResource("21_cfkt0"),
+&"sword and shield run": ExtResource("22_2p7uk"),
+&"sword and shield run (2)": ExtResource("23_esurq"),
+&"sword and shield slash": ExtResource("24_iiuvy"),
+&"sword and shield slash (2)": ExtResource("25_ysc4u"),
+&"sword and shield slash (3)": ExtResource("26_cm4tq"),
+&"sword and shield slash (4)": ExtResource("27_xxlnn"),
+&"sword and shield slash (5)": ExtResource("28_j3ohh"),
+&"sword and shield strafe": ExtResource("29_3boih"),
+&"sword and shield strafe (2)": ExtResource("30_10mft"),
+&"sword and shield strafe (3)": ExtResource("31_1gsml"),
+&"sword and shield strafe (4)": ExtResource("32_r1wca"),
+&"sword and shield turn": ExtResource("33_4yxfa"),
+&"sword and shield turn (2)": ExtResource("34_bd4dw"),
+&"sword and shield walk": ExtResource("35_g58ac"),
+&"sword and shield walk (2)": ExtResource("36_w2iiv")
+}
+
+[node name="Sword" type="CSGBox3D" parent="Body"]
+unique_name_in_owner = true
+transform = Transform3D(0.7142858, 0, -1.2371794, 0, 1.4285713, 0, 1.2371794, 0, 0.7142858, -0.737993, 0.7367251, -0.6715994)
+size = Vector3(2, 0.2, 0.2)
+
+[node name="AttackHitbox" type="Area3D" parent="Body/Sword"]
+unique_name_in_owner = true
+transform = Transform3D(0.9999999, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0)
+collision_layer = 2
+collision_mask = 256
+monitoring = false
+script = ExtResource("2_vx1ls")
+
+[node name="AttackCollision" type="CollisionShape3D" parent="Body/Sword/AttackHitbox"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+shape = SubResource("BoxShape3D_imniu")
+
+[node name="ChainLightningComponent" type="Node3D" parent="Body"]
+transform = Transform3D(-1.4285715, 0, 1.2488968e-07, 0, 1.4285715, 0, -1.2488968e-07, 0, -1.4285715, -1.14161026e-07, 1.3963451, 1.3058499)
+script = ExtResource("2_ivbhp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Body"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.9958416, 3.1252234, -0.8817415)
+light_color = Color(0.8826207, 0.6789219, 0.41760263, 1)
+omni_range = 20.0
+
+[editable path="Body"]
