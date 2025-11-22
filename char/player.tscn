@@ -196,6 +196,12 @@ shape = SubResource("BoxShape3D_imniu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02255845, -0.9140949)
 script = ExtResource("2_ivbhp")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3657274, -1.1450987)
+light_color = Color(0.8826207, 0.6789219, 0.41760263, 1)
+shadow_enabled = true
+omni_range = 20.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
